@@ -1,11 +1,7 @@
-name: advanced_nacl
+name: implicit_diala
 channels:
   - conda-forge
   - defaults
 dependencies:
-  - openmm
   - scikit-learn
   - jupyterlab
-  - ipympl
-  - nglview
-  - matplotlib 
