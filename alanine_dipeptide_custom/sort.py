@@ -113,7 +113,23 @@ def _sort_walkers_distmatrix(we_driver, ibin, status, **kwargs):
 
 
 def organize_paired_merge_list(we_driver, segments, weights, cumul_weight, **kwargs):
-    '''Whole function that deals with the paired merge list info. 
+    '''Whole function that deals with the paired merge list info.
+
+    Arguments
+    --------- 
+    we_driver : obj
+        Pointer to the we_driver (custom_driver)
+
+    segments : list/array
+       A list of all the segments, ordered by weight.
+
+    Returns
+    -------
+    ordered_array : ndarray
+        An ordered array that shows segment merging priority. Shown either:
+            paired : dimensions of  ((nframes * [nframes - 1] / 2), 2)
+            list     : dimensions of (nframes)
+        The type returned is logged in we_drive.sorting_function_arguments['scheme']
     '''
     try:
         all_coords = _collect_aux_coordinates(we_driver, segments, **kwargs)
@@ -121,6 +137,7 @@ def organize_paired_merge_list(we_driver, segments, weights, cumul_weight, **kwa
         all_coords = None
         #all_coords = _collect_coordinates(**kwargs)
     #print(f'foo {all_coords}') 
+
     # Need this backup afterall...
     if all_coords is None:
         we_driver.sorting_function_kwargs['scheme'] = 'list'

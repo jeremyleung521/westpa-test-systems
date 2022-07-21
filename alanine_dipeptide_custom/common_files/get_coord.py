@@ -12,7 +12,7 @@ import os.path
 # Topology and other paths
 topology_path = os.path.expandvars('$WEST_SIM_ROOT/common_files/diala_nowat_ff14_hmr.prmtop')
 traj_path = os.path.expandvars('$WEST_CURRENT_SEG_DATA_REF/seg.nc')
-parent_path = os.path.expandvars('$WEST_PARENT_DATA_REF/seg.ncrst')
+parent_path = os.path.expandvars('$WEST_CURRENT_SEG_DATA_REF/parent.ncrst')
 ref_path = os.path.expandvars('$WEST_SIM_ROOT/common_files/diala_nowat_eq2.pdb')
 atom_slice = numpy.asarray(range(0, 22))
 ref_slice = atom_slice
