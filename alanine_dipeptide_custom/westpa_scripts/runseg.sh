@@ -24,6 +24,7 @@ $PMEMD -O -i md.in   -p diala_nowat_ff14_hmr.prmtop  -c parent.ncrst \
 
 
 DIHED=$(mktemp)
+DIHED2=$(mktemp)
 ALIGN=$(mktemp)
 
 COMMAND="           parm diala_nowat_ff14_hmr.prmtop \n"
@@ -32,13 +33,14 @@ COMMAND="${COMMAND} trajin $WEST_CURRENT_SEG_DATA_REF/seg.nc\n"
 COMMAND="${COMMAND} reference $WEST_SIM_ROOT/common_files/diala_nowat_eq2.pdb [reference] \n"
 COMMAND="${COMMAND} rms ALIGN (!@H=) reference out $ALIGN \n"
 COMMAND="${COMMAND} multidihedral phi psi out $DIHED range360\n"
+COMMAND="${COMMAND} multidihedral phi psi out $DIHED2 \n"
 COMMAND="${COMMAND} go"
 
 echo -e "${COMMAND}" | $CPPTRAJ
 
 cat $DIHED | tail -n +2 | awk '{print $2,$3}' > $WEST_PCOORD_RETURN
-cat $DIHED | tail -n +2 | awk '{print $2}' > $WEST_PHI_RETURN
-cat $DIHED | tail -n +2 | awk '{print $3}' > $WEST_PSI_RETURN
+cat $DIHED2 | tail -n +2 | awk '{print $2}' > $WEST_PHI_RETURN
+cat $DIHED2 | tail -n +2 | awk '{print $3}' > $WEST_PSI_RETURN
 
 python $WEST_SIM_ROOT/common_files/get_coord.py
 cp coord.npy $WEST_COORD_RETURN
@@ -52,7 +54,7 @@ cp seg.ncrst  $WEST_RESTART_RETURN/parent.ncrst
 cp seg.log $WEST_LOG_RETURN
 
 # Clean Up
-rm $DIHED $ALIGN coord.npy diala_nowat_ff14_hmr.prmtop
+rm $DIHED $ALIGN $DIHED2 coord.npy diala_nowat_ff14_hmr.prmtop
 
 if [ -n "$SEG_DEBUG" ] ; then
   head -v $WEST_PCOORD_RETURN
