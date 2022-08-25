@@ -19,7 +19,7 @@ elif [ "$WEST_CURRENT_SEG_INITPOINT_TYPE" = "SEG_INITPOINT_NEWTRAJ" ]; then
   ln -sv $WEST_PARENT_DATA_REF ./parent.ncrst
 fi
 
-$PMEMD -O -i md.in   -p diala_nowat_ff14_hmr.prmtop  -c parent.ncrst \
+$SANDER -O -i md.in   -p diala_nowat_ff14_hmr.prmtop  -c parent.ncrst \
           -r seg.ncrst -x seg.nc      -o seg.log    -inf seg.nfo
 
 

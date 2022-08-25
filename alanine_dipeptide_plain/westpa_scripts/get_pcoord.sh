@@ -18,6 +18,12 @@ echo -e "${COMMAND}" | $CPPTRAJ
 
 cat $DIHED | tail -n +2 | awk '{print $2,$3}' > $WEST_PCOORD_RETURN
 
+cp $WEST_SIM_ROOT/common_files/diala_nowat_ff14_hmr.prmtop $WEST_TRAJECTORY_RETURN
+cp $WEST_STRUCT_DATA_REF $WEST_TRAJECTORY_RETURN
+
+cp $WEST_SIM_ROOT/common_files/diala_nowat_ff14_hmr.prmtop $WEST_TRAJECTORY_RETURN
+cp $WEST_STRUCT_DATA_REF $WEST_TRAJECTORY_RETURN/parent.ncrst
+
 rm $DIHED
 
 if [ -n "$SEG_DEBUG" ] ; then

@@ -1,0 +1,7 @@
+# 07/22/22 09:04:13
+parm ../common_files/diala_nowat_ff14_hmr.prmtop
+trajin diala_nowat_eq2.ncrst
+multidihedral phi psi out pcoord.dat range360
+multidihedral phi psi out dihedral.dat
+go
+exit
