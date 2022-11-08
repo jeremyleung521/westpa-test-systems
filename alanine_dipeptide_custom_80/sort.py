@@ -182,11 +182,11 @@ def _sort_remove_ineligible(sorted_array, sorted_indices, ineligible_array):
         del sorted_array[val]
 
     return sorted_array
-    
+
 
 def _featurize(coordinates):
     """User-defined function that featurizes based on the coordinates generated from _collect_coordinates.
-    This version takes the coordinate between RMSD each frame's Cl- (It's superposed on Na+)
+    This version takes the coordinate between RMSD each frame's atoms.
     
     Parameters
     ----------
@@ -203,17 +203,29 @@ def _featurize(coordinates):
         return None
     else:
         matrix = numpy.zeros((len(coordinates),len(coordinates)))
-        num_atoms = len(coordinates[0])
+        try:
+            # The following file is of shape (2, n_atoms), first dimension has the index of the atom/particle
+            # second being the mass of that specific atom/particle
+            ref_weights = numpy.load(os.path.expandvars('$WEST_SIM_ROOT/common_files/mass_array.npy'))
+            atom_weights = ref_weights[1]
+            sum_atoms = sum(ref_weights[0])
+            num_atoms = len(ref_weights[0])
+            coordinates = coordinates[:,[int(j) for j in ref_weights[0]]]
+        except FileNotFoundError:
+            # Just looking at all atoms if file does not exist
+            atom_weights = numpy.ones(len(coordinates))
+            sum_atoms = len(coordinates[0])
+            num_atoms = len(coordinates[0])
+ 
         for i in range(0, len(coordinates)): # picking the frames
             for j in range(i+1, len(coordinates)):
                 val = 0
-                for atom in range(0, num_atoms): # picking the atom, only Cl-
+                for atom in range(0, num_atoms): # picking the atom
                     for dimen in range(0, 3): # range x,y,z
                         val += (coordinates[i, atom,dimen] - coordinates[j, atom, dimen])**2
-                    matrix[i,j] = numpy.sqrt(val / num_atoms)
-                    matrix[j,i] = numpy.sqrt(val / num_atoms)
+                    matrix[i,j] = numpy.sqrt(atom_weights[atom] * val / sum_atoms)
+                    matrix[j,i] = numpy.sqrt(atom_weights[atom] * val / sum_atoms)
         return matrix
-
 
 def _collect_aux_coordinates(we_driver, segments, aux_name='coord', **kwargs):
     """Function that collects all the xyz coordinates from the auxiliary dataset, which defaults to name 'coord'.
