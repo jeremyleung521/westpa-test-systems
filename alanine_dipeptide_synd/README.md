@@ -2,10 +2,7 @@
 
 This example demonstrates running WESTPA using SynD for dynamics.
 
-The generator is a 10,500 state discrete Markov model from Trp-cage MD simulations, and the progress coordinate is RMSD from the initial unfolded state.
+The generator is a 200 state discrete Markov model from Alanine Dipeptide MD simulations, and the progress coordinate is Phi/Psi angles.Original system is made with 50ps time lag of a 10 x 1 microsecond simulation.
 
-To run the example:
-1. Install SynD (i.e., clone the repo and then `pip install <path_to_synd>`)
-2. `cd synd/examples/westpa`
-3. `w_init --bstate 'basis,1,1871' --tstate 'target,10'`
-4. `w_run`
+`run.sh` should contain the bare minimum to run the system. `environment.yml` is there to speed up the process of building all the dependencies.
+
