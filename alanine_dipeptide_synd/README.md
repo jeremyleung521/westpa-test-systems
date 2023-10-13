@@ -1,4 +1,4 @@
-# WESTPA with SynD Propagator: Trp-cage unfolding
+# WESTPA with SynD Propagator: Alanine Dipeptide Conformation Sampling
 
 This example demonstrates running WESTPA using SynD for dynamics.
 
