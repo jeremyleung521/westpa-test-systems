@@ -1,16 +1,11 @@
-# Basic WESTPA tutorial: Na+ Cl- association in GROMACS
-This turorial is meant to introduce new users to the WESTPA software for running Weighted Ensemble (WE) simulations.
-Tested with GROMACS 2022.3
+# Basic WESTPA tutorial: Chignolin Folding in GROMACS
+This folder uses the Neural Network-learned Committor from AIMMD-TPS as a progress coordinate. Tested using GROMACS 2021.2.
 
-## Tutorial files
+NN-committor model created from the pyTorch model from ``run1/model000250.pth``DOI: 10.5281/zenodo.8172628.
 
-All files necessary for completing the tutorial can be found in this directory.
-
-## Full tutorial 
-
-Find the full tutorial in the LiveCoMS WESTPA tutorials.
+(1) Lazzeri, G.; Jung, H.; Bolhuis, P. G.; Covino, R. Molecular Free Energies, Rates, and Mechanisms from Data-Efficient Path Sampling Simulations. arXiv July 20, 2023. http://arxiv.org/abs/2307.11240 (accessed 2023-07-26).
+https://arxiv.org/abs/2307.11240
 
 ## Authors
 
-* **Anthony Bogetti** - *Primary work* - [atbogetti](https://github.com/atbogetti)
-* **Alex DeGrave** - *Preliminary work* - [ajd98](https://github.com/ajd98)
+* **Jeremy Leung** - *Primary work* - [jeremyleung521](https://github.com/jeremyleung521)
