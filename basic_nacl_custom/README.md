@@ -1,14 +1,10 @@
-# Tutorial 3.1: Creating "binless" resampling schemes: Na+/Cl- association simulations
-This tutorial is meant to introduce advanced techniques when using WESTPA software for running Weighted Ensemble (WE) simulations.
+# Tutorial 5.5: Creating "binless" resampling schemes: Na+/Cl- association simulations
+This folder contains the same basic NaCl tutorial from Tutorial 5.5.
 
-## Tutorial files
+The custom distance scheme is enabled in this version such that segments are organized pair-wise based on similarity and merged based on that hierarchy, as indicated in sort.py. You will have to use the `custom_order_resampler` branch from https://github.com/jeremyleung/westpa to use sort.py. The lack of "80" in the name indicate that the gamma_ln collision frequency is set to 5 ps^{-1}, a value used when there is explicit water modeled. 
 
-All files necessary for completing the tutorial can be found in this directory.
-Additional software needs to be installed to complete the tutorial.
 
-## Full tutorial 
 
-Find the full tutorial in the LiveComs journal article on best practices for Weighted Ensemble simulations. (Link to be added)
 
 ## Authors
 
