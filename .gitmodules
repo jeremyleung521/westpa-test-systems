@@ -1,3 +1,6 @@
 [submodule "1d_odld"]
 	path = 1d_odld
 	url = https://github.com/jeremyleung521/odld
+[submodule "1d_dw_odld"]
+	path = 1d_dw_odld
+	url = https://github.com/jeremyleung521/odld_dw
