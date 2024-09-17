@@ -4,3 +4,7 @@
 [submodule "1d_dw_odld"]
 	path = 1d_dw_odld
 	url = https://github.com/jeremyleung521/odld_dw
+[submodule "2d_odld"]
+	path = 2d_odld
+	url = https://github.com/jeremyleung521/odld
+	branch = 2d
